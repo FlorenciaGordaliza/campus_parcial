@@ -1,0 +1,15 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Archivos sensibles
+.env
+*.env
+
+# Archivos compilados de python
+__pycache__/
+*.pyc
+
+# Archivos estaticos
+staticfiles/
