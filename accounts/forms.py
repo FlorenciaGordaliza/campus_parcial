@@ -11,5 +11,5 @@ class RegisterForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
-            raise ValidationError('Este email ya está registrado.')
+            raise ValidationError('Este email ya esta registrado.')
         return email

@@ -24,6 +24,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cuentas',
+    'accounts',
     'alumnos',
     'scraper',
 ]
@@ -127,7 +128,8 @@ USE_TZ = True
 
 #redirecciones
 LOGIN_REDIRECT_URL = 'alumnos:dashboard'
-LOGOUT_REDIRECT_URL = 'cuentas:login'
+LOGOUT_REDIRECT_URL = 'accounts:login'
+LOGIN_URL = '/accounts/login/'
 
 
 # Static files (CSS, JavaScript, Images)

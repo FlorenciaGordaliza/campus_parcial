@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Scraper{% endblock %}
+{% block content %}
+<h3>Scraping educativo</h3>
+<form method="post" class="row g-3">{% csrf_token %}
+  <div class="col-auto">{{ form.keyword }}</div>
+  <div class="col-auto"><button class="btn btn-primary">Buscar</button></div>
+</form>
+
+{% if results %}
+<table class="table table-bordered mt-4">
+  <thead><tr><th>Título</th><th>URL</th></tr></thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td>{{ r.titulo }}</td>
+      <td><a href="{{ r.url }}" target="_blank">{{ r.url }}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

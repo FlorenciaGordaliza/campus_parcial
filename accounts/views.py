@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
@@ -15,7 +14,7 @@ def register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             send_mail(
-                subject='Bienvenido al Campus',
+                subject='Bienvenido a Campus',
                 message=f'Hola {user.username}, ¡bienvenido!',
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[user.email],
@@ -26,10 +25,10 @@ def register(request):
             return redirect('alumnos:dashboard')
     else:
         form = RegisterForm()
-    return render(request, 'cuentas/register.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form})
 
 class UserLoginView(LoginView):
-    template_name = 'cuentas/login.html'
+    template_name = 'accounts/login.html'
 
 class UserLogoutView(LogoutView):
-    next_page = 'cuentas:login'
+    next_page = 'accounts:login'
