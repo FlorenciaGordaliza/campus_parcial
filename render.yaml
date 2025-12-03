@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: campus-app
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn campus.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False

@@ -3,7 +3,16 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h3>Mis alumnos</h3>
-  <a class="btn btn-primary" href="{% url 'alumnos:crear' %}">Nuevo alumno</a>
+  <div>
+    {% if alumnos %}
+    <a class="btn btn-success me-2" href="{% url 'alumnos:descargar_todos_pdf' %}">
+      <i class="bi bi-file-pdf"></i> Descargar listado completo (PDF)
+    </a>
+    {% endif %}
+    <a class="btn btn-primary" href="{% url 'alumnos:crear' %}">Nuevo alumno</a>
+    <a class="btn btn-outline-dark" href="{% url 'alumnos:export_csv' %}">Exportar alumnos a CSV</a>
+
+  </div>
 </div>
 <table class="table table-striped">
   <thead><tr><th>Nombre</th><th>DNI</th><th>Email</th><th>Acciones</th></tr></thead>
@@ -14,8 +23,11 @@
       <td>{{ a.dni }}</td>
       <td>{{ a.email }}</td>
       <td>
-        <a class="btn btn-outline-secondary btn-sm" href="{% url 'alumnos:enviar_pdf' a.id %}">
-          Enviar PDF por correo
+        <a class="btn btn-outline-primary btn-sm me-1" href="{% url 'alumnos:descargar_pdf' a.id %}" title="Descargar PDF">
+          <i class="bi bi-download"></i> PDF
+        </a>
+        <a class="btn btn-outline-secondary btn-sm" href="{% url 'alumnos:enviar_pdf' a.id %}" title="Enviar por correo">
+          <i class="bi bi-envelope"></i> Enviar
         </a>
       </td>
     </tr>
